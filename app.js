@@ -1,14 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const Koa = require('koa');
-const http = require('http');
-const https = require('https');
+// const http = require('http');
+// const https = require('https');
 const cors = require('koa2-cors');
 const Router = require('koa-router');
 const koaBody = require('koa-body');
 const static = require('koa-static');
 // ssl认证
-const sslify = require('koa-sslify').default;
+// const sslify = require('koa-sslify').default;
 // 导入MongoDB的_id换算工具
 const ObjectId = require('mongodb').ObjectId;
 // 导入sha1函数
@@ -23,8 +23,8 @@ const router = new Router();
 
 // 配置服务
 app
+    // .use(sslify())
     // 允许跨域访问
-    .use(sslify())
     .use(cors())
     .use(koaBody({
         multipart: true,
@@ -52,13 +52,13 @@ app
     .use(static(path.join( __dirname, './public')));
 
 // 启动服务
-// app.listen(3000);
+app.listen(3000);
 
 // 证书配置
-const options = {
-    key: fs.readFileSync('./ssl/2_www.gayestmaple.com.key'),  //ssl文件路径
-    cert: fs.readFileSync('./ssl/1_www.gayestmaple.com_bundle.crt')  //ssl文件路径
-};
+// const options = {
+//     key: fs.readFileSync('./ssl/2_www.gayestmaple.com.key'),  //ssl文件路径
+//     cert: fs.readFileSync('./ssl/1_www.gayestmaple.com_bundle.crt')  //ssl文件路径
+// };
 // 启动https
-http.createServer(app.callback()).listen(80);
-https.createServer(options, app.callback()).listen(443);
+// http.createServer(app.callback()).listen(80);
+// https.createServer(options, app.callback()).listen(443);
