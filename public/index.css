@@ -62,9 +62,9 @@ a {
 .foot a {
     color: #f4f4f4;
 }
-.foot P {
+.foot p {
     text-align: center;
 }
-.foot P:not(:first-child) {
+.foot p:not(:first-child) {
     padding-top: 10px;
 }
