@@ -102,13 +102,6 @@ class Db {
                     if (err) {
                         reject(err);
                     } else {
-                        let res = [];
-                        for (let i=0; i<docs.length; i++) {
-                            let item = {}                            
-                            item.avatarUrl = docs[i].avatarUrl;
-                            item.username = docs[i].username;
-                            res.push(item);
-                        }
                         resolve(res);
                     }
                 });
